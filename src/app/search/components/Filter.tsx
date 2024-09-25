@@ -12,8 +12,9 @@ export default function Filter() {
         router.refresh()
     }
 
-    const handleClearResults = (e: MouseEvent) => {
-        setQuery('')
+    const handleClearResults = async (e: MouseEvent) => {
+        e.preventDefault()
+        await setQuery('')
         router.refresh()
     }
 
@@ -30,7 +31,7 @@ export default function Filter() {
                 className="text-gray-700"
             />
 
-            <button className="bg-purple-400 mt-4" onClick={(e) => handleSearchGifs(e)}>
+            <button className="bg-purple-400 mt-4" onClick={e => handleSearchGifs(e)}>
                 Search
             </button>
 
