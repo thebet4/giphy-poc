@@ -23,7 +23,7 @@ export default function Pagination() {
             return
         }
      
-        setOffset(offset - 10)
+        await setOffset(offset - 10)
         router.refresh()
         return
     }
