@@ -7,14 +7,21 @@ export default function Pagination() {
     const [offset, setOffset] = useQueryState('offset', parseAsInteger.withDefault(0))
     const router = useRouter()
 
-    const handlePaginateNext = () => {
-        setOffset(offset + 10)
+    const handlePaginateNext = async () => {
+        await setOffset(offset + 10)
         router.refresh()
+
     }
-    const handlePaginatePrev = () => {
-        if(offset >= 10)
+    const handlePaginatePrev = async () => {
+        if(offset <= 10) {
+            await setOffset(0)
+            router.refresh()
+            return
+        }
+     
         setOffset(offset - 10)
         router.refresh()
+        return
     }
 
     return (
