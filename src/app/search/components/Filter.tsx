@@ -7,12 +7,12 @@ export default function Filter() {
     const [query, setQuery] = useQueryState('query', { defaultValue: 'cheeseburgers' })
     const router = useRouter()
 
-    const handleSearchGifs = (e: MouseEvent) => {
+    const handleSearchGifs = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         router.refresh()
     }
 
-    const handleClearResults = async (e: MouseEvent) => {
+    const handleClearResults = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         await setQuery('')
         router.refresh()

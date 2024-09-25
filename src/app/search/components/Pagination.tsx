@@ -7,12 +7,16 @@ export default function Pagination() {
     const [offset, setOffset] = useQueryState('offset', parseAsInteger.withDefault(0))
     const router = useRouter()
 
-    const handlePaginateNext = async () => {
+    const handlePaginateNext = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+
         await setOffset(offset + 10)
         router.refresh()
 
     }
-    const handlePaginatePrev = async () => {
+    const handlePaginatePrev = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+
         if(offset <= 10) {
             await setOffset(0)
             router.refresh()
